@@ -12,7 +12,7 @@ class PersonControllerTest extends WebTestCase
         $client = static::createClient();
         // Create a new entry in the database
         $crawler = $client->request('GET', '/');
-        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /person/");
+        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /");
         $crawler = $client->click($crawler->selectLink('Create a new person')->link());
 
         // Fill in the form and submit it
@@ -43,7 +43,7 @@ class PersonControllerTest extends WebTestCase
         $client->submit($form);
         $crawler = $client->followRedirect();
 
-        // Check the element contains an attribute with value equals "Foo"
+        // Check the element contains an attribute with value equals "Alex"
         $this->assertGreaterThan(0, $crawler->filter('[value="Alex"]')->count(), 'Missing element [value="Alex"]');
 
         // Delete the entity
