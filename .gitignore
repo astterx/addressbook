@@ -1,0 +1,7 @@
+./idea
+/var/cache/*
+/var/logs/*
+/var/sessions/*
+/app/bootstrap.php.cache
+/var/bootstrap.php.cache
+/vendor/
