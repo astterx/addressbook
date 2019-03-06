@@ -33,3 +33,6 @@ services:
     AppBundle\Service\ImageFileService:
         arguments:
             $picturesDirectory: '%pictures_directory%'
+
+    AppBundle\Extension\Twig\CountryExtension:
+        tags: ['twig.extension']

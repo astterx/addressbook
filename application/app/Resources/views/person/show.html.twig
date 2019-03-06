@@ -34,7 +34,7 @@
                                         {% if person.address %}{{ person.address }}<br>{% endif %}
                                         {% if person.city %}{{ person.city }}<br>{% endif %}
                                         ZIP {{ person.zipcode }}<br>
-                                        {% if person.country %}{{ person.country }}<br>{% endif %}
+                                        {% if person.country %}{{ person.country|country }}<br>{% endif %}
                                     </address>
                                     <address>
                                         <strong>Phone Number</strong><br>
