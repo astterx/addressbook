@@ -12,8 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Person controller.
- *
- * @Route("person")
  */
 class PersonController extends Controller
 {
@@ -37,7 +35,7 @@ class PersonController extends Controller
     /**
      * Creates a new person entity.
      *
-     * @Route("/new", name="person_new")
+     * @Route("/person/new", name="person_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request, ImageFileService $fileService)
@@ -71,7 +69,7 @@ class PersonController extends Controller
     /**
      * Finds and displays a person entity.
      *
-     * @Route("/{id}", name="person_show")
+     * @Route("/person/{id}", name="person_show")
      * @Method("GET")
      */
     public function showAction(Person $person)
@@ -87,7 +85,7 @@ class PersonController extends Controller
     /**
      * Displays a form to edit an existing person entity.
      *
-     * @Route("/{id}/edit", name="person_edit")
+     * @Route("/person/{id}/edit", name="person_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Person $person)
@@ -112,7 +110,7 @@ class PersonController extends Controller
     /**
      * Deletes a person entity.
      *
-     * @Route("/delete/{id}", name="person_delete")
+     * @Route("/person/delete/{id}", name="person_delete")
      * @Method({"POST", "DELETE"})
      */
     public function deleteAction(Request $request, Person $person, ImageFileService $fileService)
