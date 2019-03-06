@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block menu %}
+    <a class="btn btn-primary" href="{{ path('person_new') }}">Create a new person</a>
+{% endblock %}
+{% block body %}
+    <section class="bg-white text-center">
+        <div class="container">
+            <div class="row m-5">
+                <div class="col-lg-12">
+                    <h2>People list</h2>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Picture</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for person in people %}
+                            <tr>
+                                <td><a href="{{ path('person_show', { 'id': person.id }) }}">{{ person.id }}</a></td>
+                                <td>{{ person.firstname }}</td>
+                                <td>{{ person.lastname }}</td>
+                                <td>{{ person.phone }}</td>
+                                <td>{{ person.email }}</td>
+                                <td><img src="{{ asset('uploads/pictures/' ~ person.picture|default('default.png')) }}"
+                                         alt="{{ person.firstname ~ ' ' ~ person.lastname }}" class="rounded-circle"
+                                         width="32" height="32">
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <a class="btn btn-sm btn-info"
+                                               href="{{ path('person_show', { 'id': person.id }) }}">show</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <a class="btn btn-sm btn-outline-primary"
+                                               href="{{ path('person_edit', { 'id': person.id }) }}">edit</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

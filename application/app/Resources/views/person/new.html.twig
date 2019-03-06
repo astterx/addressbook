@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block menu %}
+    <a href="{{ path('person_index') }}" class="btn btn-outline-info">Back to the list</a>
+{% endblock %}
+{% block body %}
+    <section class="bg-white">
+        <div class="container">
+            <div class="row m-5">
+                <div class="col-lg-12">
+                    <h1>Add new person to address book</h1>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" class="btn btn-success" value="Add person"/>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
