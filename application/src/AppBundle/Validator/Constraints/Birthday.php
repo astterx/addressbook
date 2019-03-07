@@ -11,7 +11,7 @@ class Birthday extends Constraint
 {
     public $message = 'Birthday cannot be greater than today';
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return \get_class($this).'Validator';
     }

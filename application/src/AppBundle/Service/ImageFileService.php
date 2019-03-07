@@ -14,7 +14,7 @@ class ImageFileService implements FileServiceInterface
         $this->picturesDirectory = $picturesDirectory;
     }
 
-    public function move(UploadedFile $file): string 
+    public function move(UploadedFile $file): string
     {
         $filename = md5(uniqid()) . '.' . $file->guessExtension();
         try {
