@@ -24,6 +24,10 @@ class PersonControllerTest extends WebTestCase
             'appbundle_person[zipcode]'  => '12345',
             'appbundle_person[country]'  => 'RO',
             'appbundle_person[phone]'  => '0760123123',
+            'appbundle_person[birthday][year]'  => '1987',
+            'appbundle_person[birthday][month]'  => '10',
+            'appbundle_person[birthday][day]'  => '12',
+            'appbundle_person[email]'  => 'sandu@yahoo.com',
         ));
 
         $client->submit($form);
