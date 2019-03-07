@@ -41,6 +41,15 @@ class PersonType extends AbstractType
                 return $birthday->format('Y-m-d');
             }
         ));
+
+        $builder->get('picture')->addModelTransformer(new CallBackTransformer(
+            function($image) {
+                return null;
+            },
+            function($image) {
+                return $image;
+            }
+        ));
     }
 
     /**

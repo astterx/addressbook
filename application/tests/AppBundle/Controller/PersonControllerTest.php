@@ -17,8 +17,8 @@ class PersonControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Add person')->form(array(
-            'appbundle_person[firstname]'  => 'Sandu',
-            'appbundle_person[lastname]'  => 'Velea',
+            'appbundle_person[firstname]'  => 'Test',
+            'appbundle_person[lastname]'  => 'Test_Lastname',
             'appbundle_person[address]'  => 'Stefan cel Mare 16',
             'appbundle_person[city]'  => 'Bucharest',
             'appbundle_person[zipcode]'  => '12345',
@@ -27,29 +27,31 @@ class PersonControllerTest extends WebTestCase
             'appbundle_person[birthday][year]'  => '1987',
             'appbundle_person[birthday][month]'  => '10',
             'appbundle_person[birthday][day]'  => '12',
-            'appbundle_person[email]'  => 'sandu@yahoo.com',
+            'appbundle_person[email]'  => 'test@yahoo.com',
         ));
 
         $client->submit($form);
         $this->assertTrue($client->getResponse()->isRedirection());
         $crawler = $client->followRedirect();
 
+        $crawler = $client->click($crawler->selectLink('Back to the list')->link());
         // Check data in the show view
-        $this->assertGreaterThan(0, $crawler->filter('td:contains("Sandu")')->count(), 'Missing element td:contains("Sandu")');
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
 
         // Edit the entity
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+        $crawler = $client->click($crawler->selectLink('edit')->link());
 
         $form = $crawler->selectButton('Save')->form(array(
-            'appbundle_person[field_name]'  => 'Alex',
+            'appbundle_person[firstname]'  => 'Alex',
         ));
 
         $client->submit($form);
         $crawler = $client->followRedirect();
 
         // Check the element contains an attribute with value equals "Alex"
-        $this->assertGreaterThan(0, $crawler->filter('[value="Alex"]')->count(), 'Missing element [value="Alex"]');
+        $this->assertGreaterThan(0, $crawler->filter('td:contains("Alex")')->count(), 'Missing element td:contains("Alex")');
 
+        $crawler = $client->click($crawler->selectLink('show')->link());
         // Delete the entity
         $client->submit($crawler->selectButton('Delete')->form());
         $crawler = $client->followRedirect();

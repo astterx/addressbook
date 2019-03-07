@@ -7,6 +7,7 @@ use AppBundle\Service\ImageFileService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -97,7 +98,7 @@ class PersonController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('person_edit', array('id' => $person->getId()));
+            return $this->redirectToRoute('person_index');
         }
 
         return $this->render('person/edit.html.twig', array(
