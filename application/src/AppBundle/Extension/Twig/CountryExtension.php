@@ -7,14 +7,14 @@ use Symfony\Component\Intl\Locale;
 
 class CountryExtension extends \Twig_Extension
 {
-    public function getFilters()
+    public function getFilters(): array
     {
         return array(
             new \Twig_SimpleFilter("country", array($this, "countryFilter")),
         );
     }
 
-    public function countryFilter($countryCode, $locale = "en")
+    public function countryFilter($countryCode, $locale = "en"): string
     {
         Locale::setDefault($locale);
         $countryName = "";
@@ -24,7 +24,7 @@ class CountryExtension extends \Twig_Extension
 
         return $countryName ?: $countryCode;
     }
-    public function getName()
+    public function getName(): string 
     {
         return "country_twig_extension";
     }
