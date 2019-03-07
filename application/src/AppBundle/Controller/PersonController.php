@@ -119,7 +119,9 @@ class PersonController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $fileService->delete($person->getPicture());
+            if ($person->getPicture()) {
+                $fileService->delete($person->getPicture());
+            }
             $em->remove($person);
             $em->flush();
         }
