@@ -91,6 +91,11 @@ class PersonController extends Controller
      */
     public function editAction(Request $request, Person $person)
     {
+        if ($person->getPicture()) {
+            $person->setPicture(
+                new File($this->getParameter('pictures_directory') . '/' . $person->getPicture())
+            );
+        }
         $deleteForm = $this->createDeleteForm($person);
         $editForm = $this->createForm('AppBundle\Form\PersonType', $person);
         $editForm->handleRequest($request);
