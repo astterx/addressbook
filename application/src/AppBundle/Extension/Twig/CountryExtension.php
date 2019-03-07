@@ -24,7 +24,7 @@ class CountryExtension extends \Twig_Extension
 
         return $countryName ?: $countryCode;
     }
-    public function getName(): string 
+    public function getName(): string
     {
         return "country_twig_extension";
     }
